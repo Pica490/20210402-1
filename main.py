@@ -17,7 +17,7 @@ class Student:
             return 'Ошибка'
     def __str__(self):
         a = some_name.grades.values()
-        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашнее задание:{average(a):.1f}\n' \
+        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашнее задание:{average(a):.2f}\n' \
                f'Завершенные курсы:{self.finished_courses}\nКурсы в процессе изучения:{self.courses_in_progress}'
 
 class Mentor:
@@ -42,7 +42,7 @@ class Lecturer(Mentor):
 
     def __str__(self):
         a = some_name.grades1.values()
-        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции:{average(a):.1f}\n'
+        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции:{average(a):.2f}\n'
 
 def average(a):
     sum = 0
@@ -66,7 +66,7 @@ class Reviewer(Mentor):
 
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python']
+best_student.courses_in_progress += ['Python', 'Java']
 best_student.finished_courses += ['Java', 'Git']
 
 Reviewer_1 = Reviewer('Some','Buddy')
