@@ -22,6 +22,9 @@ class Student:
         return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашнее задание:{average(some_name):.2f}\n' \
                f'Завершенные курсы:{self.finished_courses}\nКурсы в процессе изучения:{self.courses_in_progress}'
 
+    def __lt__(self, other):
+       return average(self) < average(other)
+
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -44,6 +47,9 @@ class Lecturer(Mentor):
 
     def __str__(self):
         return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции:{average(some_name):.2f}\n'
+
+    def __lt__(self, other):
+       return average(self) < average(other)
 
 def average(some_name):
     a = some_name.grades.values()
@@ -103,8 +109,8 @@ print(some_name)
 some_name = exellent_student
 print(some_name)
 
-print(f'\nОценки студента {best_student.surname} ниже, чем у {exellent_student.surname}? : {average(best_student) < average(exellent_student)}')
-print(f'\nОценки лектора {lecturer_1.surname} ниже, чем у {lecturer_2.surname}? : {average(lecturer_1) < average(lecturer_2)}')
+print(f'\nОценки студента {best_student.surname} ниже, чем у {exellent_student.surname}?: {Student.__lt__(best_student, exellent_student)}')
+print(f'Оценки лектора {lecturer_1.surname} ниже, чем у {lecturer_2.surname}?: {Lecturer.__lt__(lecturer_1, lecturer_2)}')
 
 def avg_hw_course(student_list, course):
     sum = 0
